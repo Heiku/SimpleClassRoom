@@ -23,10 +23,10 @@
     <div class="message">商品后台管理系统</div>
     <div id="darkbannerwrap"></div>
     <form id="forms" method="post" class="layui-form">
-        <input name="account" placeholder="用户名" autocomplete="off" type="text" lay-verify="account" class="layui-input" value="admin">
+        <input name="account" placeholder="用户名" autocomplete="off" type="text" lay-verify="account" class="layui-input" value="13001001">
         <hr class="hr15">
         <input name="password" lay-verify="password" placeholder="密码" autocomplete="off" type="password"
-               class="layui-input" value="111111">
+               class="layui-input" value="sisea">
         <hr class="hr15">
         <hr class="hr15">
         <button class="layui-btn" lay-submit lay-filter="submit" style="width:100%;">登录</button>

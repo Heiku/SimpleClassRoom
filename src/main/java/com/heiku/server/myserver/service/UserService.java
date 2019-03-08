@@ -1,11 +1,20 @@
 package com.heiku.server.myserver.service;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
+import com.heiku.server.myserver.constrants.ResultEnum;
 import com.heiku.server.myserver.dao.UserDao;
+import com.heiku.server.myserver.entity.Student;
 import com.heiku.server.myserver.entity.User;
 import com.heiku.server.myserver.util.MD5Util;
+import com.heiku.server.myserver.util.ResultVOUtil;
+import com.heiku.server.myserver.vo.Result;
+import com.heiku.server.myserver.vo.ResultVO;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @Author: Heiku
@@ -76,4 +85,56 @@ public class UserService {
     }
 
 
+    public ResultVO listUser(int page, int limit, boolean all) {
+        if (all){
+            return ResultVOUtil.ok(userDao.queryAllStudent(), ResultEnum.SUCCESS);
+        }
+        PageHelper.startPage(page, limit);
+        List<Student> studentList = userDao.queryAllStudent();
+        return ResultVOUtil.ok(studentList, ((Page) studentList).getTotal(), ResultEnum.SUCCESS);
+    }
+
+
+    public ResultVO findUserById(String id) {
+        Student student = userDao.getStudentById(id);
+        if (student == null){
+            return ResultVOUtil.error(ResultEnum.USER_QUERY_NO_EXITS);
+        }
+        return ResultVOUtil.ok(student, ResultEnum.SUCCESS);
+    }
+
+    public ResultVO addStudent(Student student) {
+        String studentId = student.getStudentId();
+        String name = student.getName();
+        int gender = student.getGender();
+        String faculty = student.getFaculty();
+        String subject = student.getSubject();
+        String teacherId = student.getTeacherId();
+
+        try {
+            userDao.insertStudent(studentId, name, gender, faculty, subject, teacherId);
+            return ResultVOUtil.ok(student, ResultEnum.SUCCESS);
+        }catch (Exception e){
+            return ResultVOUtil.error(ResultEnum.ERROR);
+        }
+    }
+
+    public ResultVO updateStudent(Student student) {
+        try {
+            String studentId = student.getStudentId();
+
+            String name = student.getName();
+            int gender = student.getGender();
+            String faculty = student.getFaculty();
+            String subject = student.getSubject();
+            String teacherId = student.getTeacherId();
+
+            userDao.updateStudent(studentId, name, gender, faculty, subject, teacherId);
+            Student stu = userDao.getStudentById(studentId);
+
+            return ResultVOUtil.ok(null, ResultEnum.SUCCESS);
+        }catch (Exception e){
+            return ResultVOUtil.error(ResultEnum.ERROR);
+        }
+    }
 }

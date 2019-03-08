@@ -43,6 +43,5 @@ public class AdminUserController {
 
         SessionUtil.getSession().setAttribute("user", currentUser);
         return ResultVOUtil.ok(null, ResultEnum.USER_LOGIN_SUCCESS);
-
     }
 }

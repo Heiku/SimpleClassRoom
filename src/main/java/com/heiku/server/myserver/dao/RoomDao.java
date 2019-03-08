@@ -1,10 +1,7 @@
 package com.heiku.server.myserver.dao;
 
 import com.heiku.server.myserver.entity.Classroom;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -22,4 +19,8 @@ public interface RoomDao {
 
     @Select("select * from classroom where type = #{type} and status = 0")
     List<Classroom> selectByType(@Param("type") int type);
+
+
+    @Update("update * from classroom set status = 0 where status = 2")
+    void updateRoomStatus();
 }
