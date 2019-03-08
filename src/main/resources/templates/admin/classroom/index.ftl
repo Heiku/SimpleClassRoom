@@ -21,7 +21,7 @@
                     </select>
                 </div>
             </div>
-            <table id="data" lay-filter="table">
+            <table class="layui-hide" id="data" lay-filter="table"></table>
         </div>
     </div>
 </table>
