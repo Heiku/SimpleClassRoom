@@ -3,14 +3,14 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>商品后台管理系统</title>
+    <title>教室预约管理系统</title>
     <link rel="stylesheet" href="${request.contextPath}/plugin/layui/css/layui.css">
 </head>
 <#--<#assign currentUser = Session["currentUser"]>-->
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
     <div class="layui-header">
-        <div class="layui-logo">商品后台管理系统</div>
+        <div class="layui-logo">教室预约管理系统</div>
         <ul class="layui-nav layui-layout-right">
             <li class="layui-nav-item">
                 <a href="javascript:;">

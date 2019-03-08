@@ -3,9 +3,7 @@ package com.heiku.server.myserver.controller;
 import com.heiku.server.myserver.service.OrderService;
 import com.heiku.server.myserver.vo.ResultVO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
@@ -26,4 +24,11 @@ public class OrderAPIController {
                              @RequestParam(required = false, defaultValue = "false") boolean all) {
         return orderService.listOrder(page, limit, all);
     }
+
+
+    @RequestMapping(value = "{id}", method = RequestMethod.GET)
+    public ResultVO userDetail(@PathVariable String id){
+        return orderService.findOrderById(id);
+    }
+
 }

@@ -50,4 +50,7 @@ public interface RoomOrderDao {
 
     @Select("select * from room_order")
     List<RoomOrder> listOrders();
+
+    @Select("select * from room_order where id = #{id}")
+    RoomOrder queryOrderById(String id);
 }

@@ -121,6 +121,9 @@ public class OrderService {
 
 
 
+
+
+
     public ResultVO listOrder(int page, int limit, boolean all) {
         List<RoomOrder> roomOrderList = roomOrderDao.listOrders();
         List<OrderRoomVO> voList = new ArrayList<>();
@@ -130,7 +133,7 @@ public class OrderService {
                 voList.add(vo);
             }
         }
-        return ResultVOUtil.ok(voList, ResultEnum.SUCCESS);
+        return ResultVOUtil.ok(voList, 10, ResultEnum.SUCCESS);
     }
 
     private OrderRoomVO transToOrderVO(RoomOrder order) {
@@ -151,4 +154,19 @@ public class OrderService {
 
         return vo;
     }
+
+
+    public ResultVO findOrderById(String id) {
+        RoomOrder roomOrder = roomOrderDao.queryOrderById(id);
+        OrderRoomVO vo = transToOrderVO(roomOrder);
+
+        if (roomOrder == null){
+            return ResultVOUtil.error(ResultEnum.ERROR);
+        }
+        return ResultVOUtil.ok(vo, ResultEnum.SUCCESS);
+    }
+
+
+
+
 }
