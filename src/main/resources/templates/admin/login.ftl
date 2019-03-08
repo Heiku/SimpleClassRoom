@@ -22,14 +22,14 @@
 <div class="login">
     <div class="message">商品后台管理系统</div>
     <div id="darkbannerwrap"></div>
-    <form method="post" class="layui-form">
+    <form id="forms" method="post" class="layui-form">
         <input name="account" placeholder="用户名" autocomplete="off" type="text" lay-verify="account" class="layui-input" value="admin">
         <hr class="hr15">
         <input name="password" lay-verify="password" placeholder="密码" autocomplete="off" type="password"
                class="layui-input" value="111111">
         <hr class="hr15">
         <hr class="hr15">
-        <input value="登录" lay-submit lay-filter="login" style="width:100%;" type="submit">
+        <button class="layui-btn" lay-submit lay-filter="submit" style="width:100%;">登录</button>
         <hr class="hr20">
     </form>
 </div>
@@ -40,6 +40,7 @@
     $(function () {
         layui.use(['form', 'layer'], function () {
             var form = layui.form;
+            var  layer = layui.layer;
             form.verify({
                 account: function (v) {
                     if (v.trim() == '') {
@@ -55,12 +56,12 @@
 
             form.render();
         });
-        layer = layui.layer;
-        form.on('submit(login)', function (data) {
+
+        form.on('submit(submit)', function (data) {
             $.ajax({
                 url: '${request.contextPath}/auth/homeDoLogin',
                 type: 'post',
-                data: $('forms').serialize(),
+                data: $('#forms').serialize(),
                 success: function (data) {
                     if (data.success) {
                         layer.msg('登陆成功', {
