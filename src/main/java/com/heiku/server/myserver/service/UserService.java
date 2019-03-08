@@ -129,6 +129,8 @@ public class UserService {
         StudentVO vo = transToStudentVO(student);
         try {
             userDao.insertStudent(studentId, name, gender, faculty, subject, teacherId);
+
+
             return ResultVOUtil.ok(vo, ResultEnum.SUCCESS);
         }catch (Exception e){
             return ResultVOUtil.error(ResultEnum.ERROR);
@@ -153,6 +155,7 @@ public class UserService {
         }catch (Exception e){
             return ResultVOUtil.error(ResultEnum.ERROR);
         }
+
     }
 
 
@@ -162,6 +165,12 @@ public class UserService {
     }
 
 
+    /**
+     * student中的 teacher_id -> teacher entity
+     *
+     * @param student
+     * @return
+     */
     public StudentVO transToStudentVO(Student student){
         StudentVO vo = new StudentVO();
         BeanUtils.copyProperties(student, vo);
