@@ -5,6 +5,6 @@
     <title>错误</title>
 </head>
 <body>
-${data.msg}
+<#--${data.msg}-->
 </body>
 </html>
