@@ -49,4 +49,7 @@ public interface UserDao {
 
     @Select("select * from teacher")
     List<Teacher> queryAllTeacher();
+
+    @Delete("delete from student where student_id = #{id}")
+    void removeStudent(String id);
 }

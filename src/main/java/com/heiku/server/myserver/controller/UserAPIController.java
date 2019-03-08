@@ -45,6 +45,16 @@ public class UserAPIController {
     }
 
 
+    @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
+    public ResultVO userDelete(@PathVariable String id) {
+        try {
+            userService.deleteStudent(id);
+            return ResultVOUtil.ok(ResultEnum.SUCCESS);
+        } catch (Exception e) {
+            return ResultVOUtil.error(ResultEnum.ERROR);
+        }
+    }
+
     // 请求所有辅导员
     @RequestMapping(value = "/teacher" ,method = RequestMethod.GET)
     public ResultVO getAllTeacher(){
