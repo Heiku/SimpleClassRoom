@@ -24,8 +24,8 @@
             , page: true //开启分页
             , cols: [[ //表头
                 , {field: 'name', title: '教室名', minWidth: 120}
-                , {field: 'number', title: '容纳人数', minWidth: 200, sort: true,templet:"#Number"}
-                , {field: 'type', title: '类型', minWidth: 200, sort: true}
+                , {field: 'number', title: '容纳人数', minWidth: 200, sort: true}
+                , {field: 'type', title: '类型', minWidth: 200, sort: true,templet:"#Number"}
                 , {field: 'status', title: '状态', minWidth: 200,templet:"#Status"}
                 , {fixed: 'right', title: '操作', align: 'center', toolbar: '#toolbar'}
             ]]
