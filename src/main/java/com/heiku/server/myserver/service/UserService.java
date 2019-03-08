@@ -104,7 +104,7 @@ public class UserService {
                 voList.add(vo);
             }
         }
-        return ResultVOUtil.ok(voList, ((Page) voList).getTotal(), ResultEnum.SUCCESS);
+        return ResultVOUtil.ok(voList, 5, ResultEnum.SUCCESS);
     }
 
 
@@ -130,6 +130,8 @@ public class UserService {
         try {
             userDao.insertStudent(studentId, name, gender, faculty, subject, teacherId);
 
+            // 为新增的学生添加默认的账号
+            userDao.insertUser(studentId, "sise", 1);
 
             return ResultVOUtil.ok(vo, ResultEnum.SUCCESS);
         }catch (Exception e){
@@ -181,5 +183,14 @@ public class UserService {
         vo.setTeacher(teacher);
 
         return vo;
+    }
+
+
+    /**
+     *
+     * @param id
+     */
+    public void deleteStudent(String id) {
+        userDao.removeStudent(id);
     }
 }

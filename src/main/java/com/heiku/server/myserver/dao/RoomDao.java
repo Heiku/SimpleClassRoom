@@ -23,4 +23,18 @@ public interface RoomDao {
 
     @Update("update * from classroom set status = 0 where status = 2")
     void updateRoomStatus();
+
+    @Select("select * from classroom")
+    List<Classroom> selectAllRoom();
+
+
+    @Select("select * from classroom where id = #{id}")
+    Classroom selectByRoomId(String id);
+
+
+    @Select("select * from classroom where name = #{name}")
+    Classroom selectByRoomName(String name);
+
+    @Delete("delete from classroom where id = #{id}")
+    int deleteRoom(String id);
 }
