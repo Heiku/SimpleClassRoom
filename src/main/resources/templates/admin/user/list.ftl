@@ -23,13 +23,14 @@
             , url: '${request.contextPath}/api/user/' //数据接口
             , page: true //开启分页
             , cols: [[ //表头
+                {field: 'index', title: '序号', templet: '#asc', fixed: 'left', width: 80}
                 , {field: 'studentId', title: '学生号', minWidth: 200}
                 , {field: 'name', title: '姓名', minWidth: 120}
-                , {field: 'sex', title: '性别', minWidth: 120, sort: true,templet:"#Sex"}
+                , {field: 'gender', title: '性别', minWidth: 120, sort: true,templet:"#gender"}
                 , {field: 'faculty', title: '院系', minWidth: 120, sort: true}
                 , {field: 'subject', title: '专业方向', minWidth: 200}
                 , {field: 'teacher', title: '辅导员', minWidth: 200,templet:"#Teacher"}
-                , {fixed: 'right', title: '操作', align: 'center', toolbar: '#toolbar'}
+                , {fixed: 'right', title: '操作', align: 'center',width: 160, toolbar: '#toolbar'}
             ]]
         });
 
@@ -69,10 +70,10 @@
         <button class="layui-btn layui-btn-sm" lay-event="update">编辑</button>
     </div>
 </script>
-<script type="text/html" id="Sex">
-    {{#  if(d.sex == 0){ }}
+<script type="text/html" id="gender">
+    {{#  if(d.gender == 0){ }}
     男
-    {{#  } else if(d.sex == 1) { }}
+    {{#  } else if(d.gender == 1) { }}
     女
     {{#  } else { }}
     中性
@@ -80,6 +81,9 @@
 </script>
 <script type="text/html" id="Teacher">
     {{ d.teacher.name}}
+</script>
+<script type="text/html" id="asc">
+    {{d.LAY_TABLE_INDEX+1}}
 </script>
 </body>
 </html>
