@@ -22,7 +22,7 @@
 <div class="login">
     <div class="message">商品后台管理系统</div>
     <div id="darkbannerwrap"></div>
-    <form method="post" action="${request.contextPath}/auth/homeDoLogin" class="layui-form">
+    <form method="post" class="layui-form">
         <input name="account" placeholder="用户名" autocomplete="off" type="text" lay-verify="account" class="layui-input" value="admin">
         <hr class="hr15">
         <input name="password" lay-verify="password" placeholder="密码" autocomplete="off" type="password"
@@ -56,10 +56,29 @@
             form.render();
         });
         layer = layui.layer;
-        var msg = '${message}';
-        if (msg.trim() != "") {
-            layer.msg(msg, {icon: 5, anim: 6, offset: 't'});
-        }
+        form.on('submit(login)', function (data) {
+            $.ajax({
+                url: '${request.contextPath}/auth/homeDoLogin',
+                type: 'post',
+                data: $('forms').serialize(),
+                success: function (data) {
+                    if (data.success) {
+                        layer.msg('登陆成功', {
+                            time: 1500,
+                            icon: 1,
+                        }, function () {
+                            window.location.href = '${request.contextPath}/admin/index';
+                        });
+                    }
+
+                }
+            });
+            return false;
+        });
+        <#--var msg = '${message}';-->
+        <#--if (msg.trim() != "") {-->
+            <#--layer.msg(msg, {icon: 5, anim: 6, offset: 't'});-->
+        <#--}-->
     })
 
     if (window != top)
