@@ -45,7 +45,6 @@
         <div class="layui-form-item">
             <label class="layui-form-label">辅导员</label>
             <div class="layui-input-block">
-                <input type="text" id="teacherIdText" name="teacherId" hidden>
                 <select name="teacherId"  id="teacherId">
 
                 </select>
@@ -53,11 +52,9 @@
         </div>
         <div class="layui-form-item">
             <div class="layui-input-block">
-                <button class="layui-btn" lay-submit lay-filter="submit">立即提交</button>
+                <button class="layui-btn" lay-submit lay-filter="submit">保存</button>
             </div>
         </div>
-        <#--更新需要指定id-->
-        <input type="hidden" name="id" value="">
     </form>
 </fieldset>
 <script>
@@ -101,8 +98,8 @@
                     data.forEach(function(item) {
                         $('#teacherId').append('<option value="' + item.teacherId + '">' + item.name + '</option>');
                     })
-                    var teacherIdText = $("#teacherIdText").val();
-                    $("#teacherId option[value = " + teacherIdText + "]").attr('selected', 'selected');
+//                    var teacherIdText = $("#teacherIdText").val();
+//                    $("#teacherId option[value = " + teacherIdText + "]").attr('selected', 'selected');
                 }
                 form.render();
             }
