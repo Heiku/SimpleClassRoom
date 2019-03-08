@@ -72,7 +72,7 @@
         var form = layui.form;
         var index = layer.load(1);
         $.ajax({
-            url: '${request.contextPath}/api/user/' + getQueryString("id"),
+            url: '${request.contextPath}/api/user/' + getQueryString("studentId"),
             type: 'get',
             success: function (data) {
                 //表单初始化

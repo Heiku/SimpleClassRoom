@@ -51,7 +51,7 @@
                     })
                 });
             } else if (layEvent === 'update') {
-                window.location.href = '${request.contextPath}/admin/user/update?id=' + data.studentId;
+                window.location.href = '${request.contextPath}/admin/user/update?studentId=' + data.studentId;
             }
         });
 
