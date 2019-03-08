@@ -1,0 +1,42 @@
+
+.order-detail {
+    border-bottom: 1px solid #ddd;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.image {
+    width: 100%;
+    height: 270px;
+    border-bottom: 1px solid #ddd;
+}
+
+.item {
+    width: 100%;
+    line-height: 50px;
+}
+
+.item:not(:last-child) {
+
+    border-bottom: 1px solid #ddd;
+}
+
+.item .title {
+    display: inline-block;
+    width: 80px;
+    text-align: right;
+}
+
+.item .detail {
+    display: inline-block;
+    padding-left: 20px;
+    text-align: center;
+    color: #009688;
+}
+
