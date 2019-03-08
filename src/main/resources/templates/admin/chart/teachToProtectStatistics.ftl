@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <head>
     <meta charset="utf-8">
-    <title>教室利用率统计</title>
+    <title>教保工作量统计</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <link rel="stylesheet" href="${request.contextPath}/plugin/layui/css/layui.css" media="all">
@@ -11,15 +11,15 @@
 <body>
 <div class="layui-tab layui-tab-brief">
 
-    <#--<div class="layui-tab-content">-->
-        <#--<div class="layui-input-inline">-->
-            <#--<div class="layui-form">-->
-                <#--<select name="businessId"  lay-filter="businessId" id="businessId">-->
-                    <#--<option value="">筛选商家</option>-->
-                <#--</select>-->
-            <#--</div>-->
-        <#--</div>-->
-    <#--</div>-->
+<#--<div class="layui-tab-content">-->
+<#--<div class="layui-input-inline">-->
+<#--<div class="layui-form">-->
+<#--<select name="businessId"  lay-filter="businessId" id="businessId">-->
+<#--<option value="">筛选商家</option>-->
+<#--</select>-->
+<#--</div>-->
+<#--</div>-->
+<#--</div>-->
 
     <div class="layui-card">
         <div class="layui-card-body" id="main" style="width:600px;height:400px; margin: 0 auto">
@@ -35,12 +35,12 @@
 
         $.ajax({
             type: 'get',
-            url: contextPath + '/api/chart/',
+            url: contextPath + '/api/chart/admin',
             dataType: "json",
             success: function (res) {
                 console.log(res.data);
                 var datas = res.data;
-                pie(datas, '教室利用率统计')
+                pie(datas, '教保工作量统计')
             }
         })
         // 渲染列表
@@ -49,40 +49,41 @@
             var myChart = echarts.init(document.getElementById('main'));
 
             // 指定图表的配置项和数据
+            // 指定图表的配置项和数据
             var option = {
-                title : {
-                    text: text,
-                    x:'center'
+                title: {
+                    x: 'center',
+                    text: text
                 },
-                tooltip : {
+                tooltip: {
                     trigger: 'item',
-                    formatter: "{a} <br/>{b} : {c} ({d}%)"
+                    formatter: "{a} <br/>{b} : {c}"
                 },
-                legend: {
-                    type: 'scroll',
-                    orient: 'vertical',
-                    right: 10,
-                    top: 20,
-                    bottom: 20,
-                    data:   datas.x,
-                    selected: data.selected
+                xAxis: {
+                    data: datas.xobj.xlist
                 },
-                series : [
-                    {
-                        name: '利用率',
-                        type: 'pie',
-                        radius : '55%',
-                        center: ['40%', '50%'],
-                        data:   datas.y,
-                        itemStyle: {
-                            emphasis: {
-                                shadowBlur: 10,
-                                shadowOffsetX: 0,
-                                shadowColor: 'rgba(0, 0, 0, 0.5)'
+                yAxis: {},
+                series: [{
+                    name: '工作量',
+                    type: 'bar',
+                    itemStyle: {
+                        normal: {
+                            color: function (params) {
+                                // build a color map as your need.
+                                var colorList = [
+                                    '#2ec7c9','#b6a2de','#5ab1ef','#ffb980'
+                                ];
+                                return colorList[params.dataIndex]
+                            },
+                            label: {
+                                show: true,
+                                position: 'top',
+                                formatter: '{b}\n{c}'
                             }
                         }
-                    }
-                ]
+                    },
+                    data: datas.yobj.ylist
+                }]
             };
 
 
