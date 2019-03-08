@@ -23,10 +23,14 @@
             , url: '${request.contextPath}/api/order/' //数据接口
             , page: true //开启分页
             , cols: [[ //表头
-                , {field: 'roomName', title: '教室名', width: 180, templet:"#addressId"}
-                , {field: 'useFor', title: '用途', width: 100, templet: '#orderStatus'}
-                , {field: 'classTime', title: '课节', sort: true, width: 180}
-                , {field: 'type', title: '教室类型', sort: true, width: 180}
+                , {field: 'roomName', title: '教室名', minWidth: 180}
+                , {field: 'useFor', title: '用途', minWidth: 100}
+                , {field: 'classTime', title: '课节', sort: true, minWidth: 180}
+                , {field: 'type', title: '教室类型', sort: true, minWidth: 180,templet:'#Type'}
+                , {field: 'student', title: '申请人', sort: true, minWidth: 180,templet:'#Student'}
+                , {field: 'teacher', title: '辅导员', sort: true, minWidth: 180,templet:'#Teacher'}
+                , {field: 'admin', title: '教保', sort: true, minWidth: 180,templet:'#Admin'}
+
 //                 ,{fixed: 'right',title:'操作', align:'center', toolbar: '#toolbar',width:180}
             ]]
         });
@@ -35,6 +39,27 @@
     });
 
 </script>
-
+<script type="text/html" id="Type">
+    {{#  if(d.type == 0){ }}
+    机房
+    {{# } else if(d.type == 1){ }}
+    多媒体教室
+    {{# } else if(d.type == 2){ }}
+    礼堂
+    {{# } else if(d.type == 3){ }}
+    普通教室
+    {{#  } else { }}
+    状态错误
+    {{#  } }}
+</script>
+<script type="text/html" id="Student">
+    {{ d.student.name}}
+</script>
+<script type="text/html" id="Teacher">
+    {{ d.teacher.name}}
+</script>
+<script type="text/html" id="Admin">
+    {{ d.admin.name}}
+</script>
 </body>
 </html>

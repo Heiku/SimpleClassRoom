@@ -9,9 +9,10 @@
 </head>
 <body>
 
-    <div class="layui-container">
+    <div class="layui-tab layui-tab-brief">
         <button class="layui-btn layui-btn-sm" id="add">添加</button>
-            <div class="layui-input-inline" style="margin-lfet: 100px">
+        <div class="layui-input-inline" style="margin-lfet: 50px">
+            <div class="layui-tab-content">
                 <div class="layui-form">
                     <select name="type"  lay-filter="type" id="type">
                         <option value="0">机房</option>
@@ -21,8 +22,13 @@
                     </select>
                 </div>
             </div>
+        </div>
         <table class="layui-hide" id="data" lay-filter="table"></table>
     </div>
+
+
+
+
 <script>
     layui.use(['table','form'], function () {
         var $ = layui.jquery;
