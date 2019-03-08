@@ -25,13 +25,18 @@
         <div class="layui-card-body" id="main" style="width:600px;height:400px; margin: 0 auto">
         </div>
     </div>
+    <div class="layui-card">
+        <div class="layui-card-body" id="teacher" style="width:600px;height:400px; margin: 0 auto">
+        </div>
+    </div>
 </div>
 <script type="text/javascript" src="${request.contextPath}/plugin/echart/echart.min.js"></script>
 <script>
     layui.use('', function () {
         var $ = layui.$;
 
-
+        var mian = document.getElementById('main');
+        var teacher = document.getElementById('teacher');
 
         $.ajax({
             type: 'get',
@@ -40,13 +45,24 @@
             success: function (res) {
                 console.log(res.data);
                 var datas = res.data;
-                pie(datas, '教保工作量统计')
+                pie(datas, '教保工作量统计',mian)
+            }
+        })
+
+        $.ajax({
+            type: 'get',
+            url: contextPath + '/api/chart/teacher',
+            dataType: "json",
+            success: function (res) {
+                console.log(res.data);
+                var datas = res.data;
+                pie(datas, '教师工作量统计',teacher)
             }
         })
         // 渲染列表
-        var pie = function(datas ,text) {
+        var pie = function(datas ,text, id) {
             // 基于准备好的dom，初始化echarts实例
-            var myChart = echarts.init(document.getElementById('main'));
+            var myChart = echarts.init(id);
 
             // 指定图表的配置项和数据
             // 指定图表的配置项和数据
