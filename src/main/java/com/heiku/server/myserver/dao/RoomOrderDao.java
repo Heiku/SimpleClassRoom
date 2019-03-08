@@ -53,4 +53,11 @@ public interface RoomOrderDao {
 
     @Select("select * from room_order where id = #{id}")
     RoomOrder queryOrderById(String id);
+
+
+    @Select("select count(*) from room_order where admin_id = #{adminId}")
+    int queryOrderNumByAdminId(String adminId);
+
+    @Select("select count(*) from room_order where teacher_id = #{teacherId}")
+    int queryOrderNumByTeacherId(String teacherId);
 }

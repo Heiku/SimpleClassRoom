@@ -52,4 +52,7 @@ public interface UserDao {
 
     @Delete("delete from student where student_id = #{id}")
     void removeStudent(String id);
+
+    @Select("select * from admin")
+    List<Admin> quertAllAdmin();
 }

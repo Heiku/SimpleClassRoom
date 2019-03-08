@@ -2,6 +2,10 @@ package com.heiku.server.myserver.controller;
 
 import com.heiku.server.myserver.constrants.ResultEnum;
 import com.heiku.server.myserver.dao.RoomDao;
+import com.heiku.server.myserver.dao.RoomOrderDao;
+import com.heiku.server.myserver.dao.UserDao;
+import com.heiku.server.myserver.entity.Admin;
+import com.heiku.server.myserver.entity.Teacher;
 import com.heiku.server.myserver.service.RoomService;
 import com.heiku.server.myserver.util.ResultVOUtil;
 import com.heiku.server.myserver.vo.ClassRoomUseChart;
@@ -27,6 +31,13 @@ public class ChartAPIController {
 
     @Autowired
     private RoomDao roomDao;
+
+    @Autowired
+    private UserDao userDao;
+
+
+    @Autowired
+    private RoomOrderDao orderDao;
 
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
@@ -61,6 +72,54 @@ public class ChartAPIController {
 
     @RequestMapping(value = "/admin", method = RequestMethod.GET)
     public ResultVO queryAdminChart(){
-        return null;
+
+        List<String> xList = new ArrayList<>();
+        List<Integer> yList = new ArrayList<>();
+
+        List<Admin> adminList = userDao.quertAllAdmin();
+        for (Admin admin : adminList){
+            String adminId = admin.getAdminId();
+            int currentNum = orderDao.queryOrderNumByAdminId(adminId);
+
+            xList.add(admin.getName());
+            yList.add(currentNum);
+        }
+
+        X x = new X();
+        x.setXList(xList);
+        Y y = new Y();
+        y.setYList(yList);
+
+
+        ClassRoomUseChart chart = new ClassRoomUseChart(x, y);
+
+        return ResultVOUtil.ok(chart, ResultEnum.SUCCESS);
     }
+
+    @RequestMapping(value = "/teacher", method = RequestMethod.GET)
+    public ResultVO queryTeacherChart(){
+
+        List<String> xList = new ArrayList<>();
+        List<Integer> yList = new ArrayList<>();
+
+            List<Teacher> teacherList = userDao.queryAllTeacher();
+        for (Teacher teacher : teacherList){
+            String teacherId = teacher.getTeacherId();
+            int currentNum = orderDao.queryOrderNumByTeacherId(teacherId);
+
+            xList.add(teacher.getName());
+            yList.add(currentNum);
+        }
+
+        X x = new X();
+        x.setXList(xList);
+        Y y = new Y();
+        y.setYList(yList);
+
+
+        ClassRoomUseChart chart = new ClassRoomUseChart(x, y);
+
+        return ResultVOUtil.ok(chart, ResultEnum.SUCCESS);
+    }
+
 }

@@ -30,9 +30,9 @@
         </div>
     </div>
 </div>
-<script type="text/javascript" src="${request.contextPath}/plugin/echart/echart.min.js"></script>
+<script type="text/javascript" src="${request.contextPath}/plugin/echart/echarts.min.js"></script>
 <script>
-    layui.use('', function () {
+    layui.use('table', function () {
         var $ = layui.$;
 
         var mian = document.getElementById('main');
@@ -40,7 +40,7 @@
 
         $.ajax({
             type: 'get',
-            url: contextPath + '/api/chart/admin',
+            url: '${request.contextPath}/api/chart/admin',
             dataType: "json",
             success: function (res) {
                 console.log(res.data);
@@ -51,7 +51,7 @@
 
         $.ajax({
             type: 'get',
-            url: contextPath + '/api/chart/teacher',
+            url: '${request.contextPath}/api/chart/teacher',
             dataType: "json",
             success: function (res) {
                 console.log(res.data);
