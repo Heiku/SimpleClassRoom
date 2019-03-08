@@ -37,4 +37,13 @@ public interface RoomDao {
 
     @Delete("delete from classroom where id = #{id}")
     int deleteRoom(String id);
+
+    @Select("select count(*) from classroom where status = 0")
+    int queryNoUse();
+
+    @Select("select count(*) from classroom where status = 2")
+    int queryUse();
+
+    @Select("select count(*) from classroom where status = 1")
+    int queryProcess();
 }

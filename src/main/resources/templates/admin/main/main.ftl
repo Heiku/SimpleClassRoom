@@ -50,8 +50,8 @@
                 <li class="layui-nav-item">
                     <a href="javascript:;">统计管理</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="javascript:;" data-url="${request.contextPath}/admin/chart/classRoomStatistics" data-id="3"
-                               class="site-auction-active" data-title="教室统计" data-type="tabAdd">教室利用率统计</a></dd>
+                        <dd><a href="javascript:;" data-url="${request.contextPath}/admin/chart/classRoomStatistics" data-id="4"
+                               class="site-auction-active" data-title="教室利用率统计" data-type="tabAdd">教室利用率统计</a></dd>
                     </dl>
                 </li>
             </ul>

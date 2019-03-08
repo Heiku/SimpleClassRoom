@@ -49,4 +49,10 @@ public class HelloController {
     public String toOrder(@PathVariable String path) {
         return "/admin/order/" + path;
     }
+
+    // chart
+    @RequestMapping(value = "chart/{path}")
+    public String toChart(@PathVariable String path) {
+        return "/admin/chart/" + path;
+    }
 }
