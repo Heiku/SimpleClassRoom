@@ -27,6 +27,7 @@
                 , {field: 'useFor', title: '用途', minWidth: 100}
                 , {field: 'timeStr', title: '课节', sort: true, minWidth: 180}
                 , {field: 'type', title: '教室类型', sort: true, minWidth: 180,templet:'#Type'}
+                , {field: 'status', title: '教室状态', minWidth: 200,templet:"#Status"}
                 , {field: 'student', title: '申请人', sort: true, minWidth: 180,templet:'#Student'}
                 , {field: 'teacher', title: '辅导员', sort: true, minWidth: 180,templet:'#Teacher'}
                 , {field: 'admin', title: '教保', sort: true, minWidth: 180,templet:'#Admin'}
@@ -39,6 +40,17 @@
 
     });
 
+</script>
+<script type="text/html" id="Status">
+    {{#  if(d.status == 0){ }}
+    未使用
+    {{# } else if(d.status == 1){ }}
+    已被申请（未通过）
+    {{# }  else if(d.status == 2){ }}
+    申请已通过
+    {{#  } else { }}
+    状态错误
+    {{#  } }}
 </script>
 <script type="text/html" id="Type">
     {{#  if(d.type == 0){ }}

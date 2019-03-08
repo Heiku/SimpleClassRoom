@@ -45,7 +45,7 @@
             , cols: [[ //表头
                 , {field: 'name', title: '教室名', minWidth: 120}
                 , {field: 'number', title: '容纳人数', minWidth: 200, sort: true}
-                , {field: 'type', title: '类型', minWidth: 200, sort: true,templet:"#Number"}
+                , {field: 'type', title: '类型', minWidth: 200, sort: true,templet:"#Type"}
                 , {field: 'status', title: '状态', minWidth: 200,templet:"#Status"}
                 , {fixed: 'right', title: '操作', align: 'center', toolbar: '#toolbar'}
             ]]
@@ -53,7 +53,7 @@
 
         // 教室类型筛选
         form.on('select(type)', function (data) {
-            table.reload('table', {
+            table.reload('data', {
                 where: {
                     type: data.value
                 }
@@ -108,7 +108,7 @@
     状态错误
     {{#  } }}
 </script>
-<script type="text/html" id="Number">
+<script type="text/html" id="Type">
     {{#  if(d.type == 0){ }}
     机房
     {{# } else if(d.type == 1){ }}
