@@ -15,6 +15,7 @@
             <div class="layui-tab-content">
                 <div class="layui-form">
                     <select name="type"  lay-filter="type" id="type">
+                        <option value="-1">筛选教室类型</option>
                         <option value="0">机房</option>
                         <option value="1">多媒体教室</option>
                         <option value="2">礼堂</option>
