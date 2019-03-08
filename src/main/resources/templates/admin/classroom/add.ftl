@@ -12,41 +12,35 @@
     <legend>添加用户信息</legend>
     <form class="layui-form" lay-filter="form">
         <div class="layui-form-item">
-            <label class="layui-form-label">学生号</label>
+            <label class="layui-form-label">教室名</label>
             <div class="layui-input-block">
-                <input type="text" name="studentId" placeholder="请输入学生号" autocomplete="off" class="layui-input">
+                <input type="text" name="name" placeholder="请输入教室名" autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">姓名</label>
+            <label class="layui-form-label">容纳人数</label>
             <div class="layui-input-block">
-                <input type="text" name="name" placeholder="请输入" autocomplete="off" class="layui-input">
+                <input type="number"  name="number" placeholder="请输入" autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">性别</label>
+            <label class="layui-form-label">教室类型</label>
             <div class="layui-input-block">
-                <input type="radio" name="gender" value="0" title="男" checked="">
-                <input type="radio" name="gender" value="1" title="女">
+                <select name="type"  id="type">
+                    <option value="0">机房</option>
+                    <option value="1">多媒体教室</option>
+                    <option value="2">礼堂</option>
+                    <option value="3">普通教室</option>
+                </select>
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">院系</label>
+            <label class="layui-form-label">教室状态</label>
             <div class="layui-input-block">
-                <input type="text" name="faculty" placeholder="请输入院系" autocomplete="off" class="layui-input">
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">专业方向</label>
-            <div class="layui-input-block">
-                <input type="text" name="subject" placeholder="请输入专业方向" autocomplete="off" class="layui-input">
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">辅导员</label>
-            <div class="layui-input-block">
-                <select name="teacherId"  id="teacherId">
-
+                <select name="status"  id="status">
+                    <option value="0">未使用</option>
+                    <option value="1">已被申请（未通过）</option>
+                    <option value="2">申请已通过</option>
                 </select>
             </div>
         </div>
@@ -65,25 +59,10 @@
         //表单初始化(如果不初始化，会出现部分控件无效的情况)
         form.render();
 
-        // 渲染辅导员
-        $.ajax({
-            url: '${request.contextPath}/api/user/teacher',
-            type: 'get',
-            success: function (res) {
-                $('#teacherId').empty();
-                if (res.success && res.data) {
-                    var data = res.data;
-                    data.forEach(function(item) {
-                        $('#teacherId').append('<option value="' + item.teacherId + '">' + item.name + '</option>');
-                    })
-                }
-                form.render();
-            }
-        });
 
         form.on('submit(submit)', function (data) {
             $.ajax({
-                url: '${request.contextPath}/api/user/',
+                url: '${request.contextPath}/api/classroom/',
                 type: 'post',
                 data: data.field,
                 success: function (data) {
@@ -91,7 +70,7 @@
                         time: 1500,
                         icon: 1,
                     }, function () {
-                        window.location.href = '${request.contextPath}/admin/user/list';
+                        window.location.href = '${request.contextPath}/admin/classroom/index';
                     });
                 }
             });

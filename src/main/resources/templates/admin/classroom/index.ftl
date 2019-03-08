@@ -20,15 +20,13 @@
         table.render({
             elem: '#data'
             , height: 500
-            , url: '${request.contextPath}/api/user/' //数据接口
+            , url: '${request.contextPath}/api/classroom/' //数据接口
             , page: true //开启分页
             , cols: [[ //表头
-                , {field: 'studentId', title: '学生号', minWidth: 120}
-                , {field: 'name', title: '姓名', minWidth: 100}
-                , {field: 'sex', title: '性别', minWidth: 80, sort: true,templet:"#Sex"}
-                , {field: 'faculty', title: '院系', minWidth: 80, sort: true}
-                , {field: 'subject', title: '专业方向', minWidth: 80}
-                , {field: 'teacher', title: '辅导员', minWidth: 80,templet:"#Teacher"}
+                , {field: 'name', title: '教室名', minWidth: 120}
+                , {field: 'number', title: '容纳人数', minWidth: 200, sort: true,templet:"#Number"}
+                , {field: 'type', title: '类型', minWidth: 200, sort: true}
+                , {field: 'status', title: '状态', minWidth: 200,templet:"#Status"}
                 , {fixed: 'right', title: '操作', align: 'center', toolbar: '#toolbar'}
             ]]
         });
@@ -43,21 +41,22 @@
                     layer.close(index);
                     //向服务端发送删除指令
                     $.ajax({
-                        url: '${request.contextPath}/api/user/' + data.studentId,
+                        url: '${request.contextPath}/api/classroom/' + data.id,
                         type: 'delete',
                         success: function (data) {
                             alert("删除成功");
                         }
                     })
                 });
-            } else if (layEvent === 'update') {
-                window.location.href = '${request.contextPath}/admin/user/update?studentId=' + data.studentId;
             }
+            <#--else if (layEvent === 'update') {-->
+                <#--window.location.href = '${request.contextPath}/api/classroom/update?studentId=' + data.studentId;-->
+            <#--}-->
         });
 
         //监听顶部添加按钮
         $("#add").click(function () {
-            window.location.href = '${request.contextPath}/admin/user/add';
+            window.location.href = '${request.contextPath}/api/classroom/add';
         })
     });
 
@@ -66,14 +65,31 @@
 <script type="text/html" id="toolbar">
     <div class="layui-btn-container">
         <button class="layui-btn layui-btn-sm" lay-event="delete">删除</button>
-        <button class="layui-btn layui-btn-sm" lay-event="update">编辑</button>
+        <#--<button class="layui-btn layui-btn-sm" lay-event="update">编辑</button>-->
     </div>
 </script>
-<script type="text/html" id="Sex">
-    {{#  if(d.sex == 0){ }}
-    男
+<script type="text/html" id="Status">
+    {{#  if(d.status == 0){ }}
+    未使用
+    {{#  if(d.status == 1){ }}
+    已被申请（未通过）
+    {{#  if(d.status == 2){ }}
+    申请已通过
     {{#  } else { }}
-    女
+    状态错误
+    {{#  } }}
+</script>
+<script type="text/html" id="Number">
+    {{#  if(d.number == 0){ }}
+    机房
+    {{#  if(d.number == 1){ }}
+    多媒体教室
+    {{#  if(d.number == 2){ }}
+    礼堂
+    {{#  if(d.number == 3){ }}
+    普通教室
+    {{#  } else { }}
+    状态错误
     {{#  } }}
 </script>
 <script type="text/html" id="Teacher">
