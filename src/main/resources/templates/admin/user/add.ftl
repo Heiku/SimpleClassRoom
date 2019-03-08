@@ -12,15 +12,9 @@
     <legend>添加用户信息</legend>
     <form class="layui-form" lay-filter="form">
         <div class="layui-form-item">
-            <label class="layui-form-label">用户名</label>
+            <label class="layui-form-label">学生号</label>
             <div class="layui-input-block">
-                <input type="text" name="account" placeholder="请输入" autocomplete="off" class="layui-input">
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">密码</label>
-            <div class="layui-input-block">
-                <input type="password" name="password" placeholder="请输入" autocomplete="off" class="layui-input">
+                <input type="text" name="studentId" placeholder="请输入学生号" autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
@@ -32,34 +26,31 @@
         <div class="layui-form-item">
             <label class="layui-form-label">性别</label>
             <div class="layui-input-block">
-                <input type="radio" name="sex" value="男" title="男" checked="">
-                <input type="radio" name="sex" value="女" title="女">
+                <input type="radio" name="gender" value="男" title="男" checked="">
+                <input type="radio" name="gender" value="女" title="女">
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">手机号码</label>
+            <label class="layui-form-label">院系</label>
             <div class="layui-input-block">
-                <input type="text" name="phone" placeholder="请输入" autocomplete="off" class="layui-input">
+                <input type="text" name="faculty" placeholder="请输入院系" autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">邮箱</label>
+            <label class="layui-form-label">专业方向</label>
             <div class="layui-input-block">
-                <input type="text" name="email" placeholder="请输入" autocomplete="off" class="layui-input">
+                <input type="text" name="subject" placeholder="请输入专业方向" autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">年龄</label>
+            <label class="layui-form-label">辅导员</label>
             <div class="layui-input-block">
-                <input type="number" name="age" placeholder="请输入" autocomplete="off" class="layui-input">
+                <select name="teacherId"  id="teacherId">
+
+                </select>
             </div>
         </div>
-        <div class="layui-form-item layui-form-text">
-            <label class="layui-form-label">个人描述</label>
-            <div class="layui-input-block">
-                <textarea placeholder="请输入内容" name="remark" class="layui-textarea"></textarea>
-            </div>
-        </div>
+
         <div class="layui-form-item">
             <div class="layui-input-block">
                 <button class="layui-btn" lay-submit lay-filter="submit">立即提交</button>
@@ -73,6 +64,22 @@
         var form = layui.form;
         //表单初始化(如果不初始化，会出现部分控件无效的情况)
         form.render();
+
+        // 渲染辅导员
+        $.ajax({
+            url: '${request.contextPath}/api/user/teacher',
+            type: 'get',
+            success: function (res) {
+                $('#teacherId').empty();
+                if (res.success && res.data) {
+                    var data = res.data;
+                    data.forEach(function(item) {
+                        $('#teacherId').append('<option value="' + item.teacherId + '">' + item.name + '</option>');
+                    })
+                }
+                form.render();
+            }
+        });
 
         form.on('submit(submit)', function (data) {
             $.ajax({

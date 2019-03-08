@@ -24,16 +24,12 @@
             , page: true //开启分页
             , cols: [[ //表头
                 {field: 'id', title: 'ID', width: 60, sort: true, fixed: 'left'}
-                , {field: 'account', title: '用户名', width: 120}
+                , {field: 'studentId', title: '学生号', width: 120}
                 , {field: 'name', title: '姓名', width: 100}
-                , {field: 'sex', title: '性别', width: 80, sort: true}
-                , {field: 'age', title: '年龄', width: 80, sort: true}
-                , {field: 'phone', title: '电话', width: 80}
-                , {field: 'email', title: '邮箱', width: 80}
-                , {field: 'balance', title: '余额', width: 80, sort: true}
-                , {field: 'remark', title: '备注', width: 120}
-                , {field: 'modifyTime', title: '更新时间',}
-                , {field: 'createTime', title: '创建时间', sort: true}
+                , {field: 'sex', title: '性别', width: 80, sort: true,templet:"#Sex"}
+                , {field: 'faculty', title: '院系', width: 80, sort: true}
+                , {field: 'subject', title: '专业方向', width: 80}
+                , {field: 'teacherId', title: '辅导员id', width: 80}
                 , {fixed: 'right', title: '操作', align: 'center', toolbar: '#toolbar'}
             ]]
         });
@@ -74,5 +70,13 @@
         <button class="layui-btn layui-btn-sm" lay-event="update">编辑</button>
     </div>
 </script>
+<script type="text/html" id="Sex">
+    {{#  if(d.sex == 0){ }}
+    男
+    {{#  } else { }}
+    女
+    {{#  } }}
+</script>
+
 </body>
 </html>
