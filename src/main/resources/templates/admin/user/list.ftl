@@ -43,7 +43,7 @@
                     layer.close(index);
                     //向服务端发送删除指令
                     $.ajax({
-                        url: '${request.contextPath}/api/user/' + data.id,
+                        url: '${request.contextPath}/api/user/' + data.studentId,
                         type: 'delete',
                         success: function (data) {
                             alert("删除成功");
@@ -51,7 +51,7 @@
                     })
                 });
             } else if (layEvent === 'update') {
-                window.location.href = '${request.contextPath}/admin/user/update?id=' + data.id;
+                window.location.href = '${request.contextPath}/admin/user/update?id=' + data.studentId;
             }
         });
 
