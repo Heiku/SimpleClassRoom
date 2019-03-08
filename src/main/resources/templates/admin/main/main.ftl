@@ -43,7 +43,7 @@
                 <li class="layui-nav-item">
                     <a href="javascript:;">订单管理</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="javascript:;" data-url="${request.contextPath}/order/list" data-id="3"
+                        <dd><a href="javascript:;" data-url="${request.contextPath}/admin/order/list" data-id="3"
                                class="site-auction-active" data-title="订单管理" data-type="tabAdd">订单管理</a></dd>
 
                     </dl>
