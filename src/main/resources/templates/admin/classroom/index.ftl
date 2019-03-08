@@ -79,7 +79,7 @@
 
         //监听顶部添加按钮
         $("#add").click(function () {
-            window.location.href = '${request.contextPath}/api/classroom/add';
+            window.location.href = '${request.contextPath}/admin/classroom/add';
         })
     });
 
@@ -94,9 +94,9 @@
 <script type="text/html" id="Status">
     {{#  if(d.status == 0){ }}
     未使用
-    {{#  else if(d.status == 1){ }}
+    {{# } else if(d.status == 1){ }}
     已被申请（未通过）
-    {{#  else if(d.status == 2){ }}
+    {{# }  else if(d.status == 2){ }}
     申请已通过
     {{#  } else { }}
     状态错误
@@ -105,11 +105,11 @@
 <script type="text/html" id="Number">
     {{#  if(d.type == 0){ }}
     机房
-    {{#  else if(d.type == 1){ }}
+    {{# } else if(d.type == 1){ }}
     多媒体教室
-    {{#  else if(d.type == 2){ }}
+    {{# } else if(d.type == 2){ }}
     礼堂
-    {{#  else if(d.type == 3){ }}
+    {{# } else if(d.type == 3){ }}
     普通教室
     {{#  } else { }}
     状态错误
