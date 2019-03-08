@@ -2,6 +2,7 @@ package com.heiku.server.myserver.service;
 
 import com.heiku.server.myserver.dao.RoomDao;
 import com.heiku.server.myserver.entity.Classroom;
+import com.heiku.server.myserver.vo.ResultVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,5 +26,10 @@ public class RoomService {
 
     public List<Classroom> queryRoomByType(int type){
         return roomDao.selectByType(type);
+    }
+
+    public ResultVO listRoom(int page, int limit, boolean all) {
+
+        return null;
     }
 }

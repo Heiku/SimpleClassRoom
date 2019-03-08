@@ -45,4 +45,8 @@ public interface UserDao {
     @Update("update student set name = #{name} and gender = #{gender} and faculty = #{faculty} and subject = #{subject}" +
             "and teacher_id = #{teacherId} where student_id = #{studentId}")
     int updateStudent(String studentId, String name, int gender, String faculty, String subject, String teacherId);
+
+
+    @Select("select * from teacher")
+    List<Teacher> queryAllTeacher();
 }

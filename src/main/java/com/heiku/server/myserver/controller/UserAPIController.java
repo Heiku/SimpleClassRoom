@@ -44,4 +44,10 @@ public class UserAPIController {
         return userService.updateStudent(student);
     }
 
+
+    // 请求所有辅导员
+    @RequestMapping(value = "/teacher" ,method = RequestMethod.GET)
+    public ResultVO getAllTeacher(){
+        return userService.getAllTeacher();
+    }
 }
