@@ -10,7 +10,13 @@ import lombok.Getter;
 @Getter
 public enum  ResultEnum {
     SUCCESS(0, "成功"),
-    ERROR(1, "失败");
+    ERROR(1, "失败"),
+
+
+    USER_QUERY_NO_EXITS(10001, "查找不到该用户"),
+    USER_LOGIN_PASSWD_FAIL(10010, "密码错误"),
+    USER_LOGIN_SUCCESS(10009, "登陆成功"),
+    ;
 
 
     private Integer code;
