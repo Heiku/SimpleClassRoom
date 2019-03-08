@@ -133,6 +133,11 @@ public class OrderService {
                 OrderRoomVO vo = transToOrderVO(order);
                 voList.add(vo);
             }
+
+
+            for (OrderRoomVO vo : voList){
+                System.out.println(vo.getId());
+            }
         }
         return ResultVOUtil.ok(voList, 10, ResultEnum.SUCCESS);
     }

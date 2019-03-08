@@ -5,8 +5,7 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <link rel="stylesheet" href="${request.contextPath}/plugin/layui/css/layui.css" media="all">
-    <script type="text/javascript" src="${request.contextPath}/plugin/layui/layui.js"></script>
-    <script type="text/javascript" src="${request.contextPath}/plugin/jquery/jquery-3.2.1.min.js"></script>
+
 </head>
 <body>
 <div class="layui-tab layui-tab-brief">
@@ -26,16 +25,18 @@
         </div>
     </div>
 </div>
-<script type="text/javascript" src="${request.contextPath}/plugin/echart/echart.min.js"></script>
+<script type="text/javascript" src="${request.contextPath}/plugin/layui/layui.js"></script>
+<script type="text/javascript" src="${request.contextPath}/plugin/jquery/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="${request.contextPath}/plugin/echart/echarts.min.js"></script>
 <script>
-    layui.use('', function () {
+    layui.use('table', function () {
         var $ = layui.$;
 
 
 
         $.ajax({
             type: 'get',
-            url: contextPath + '/api/chart/',
+            url:  '${request.contextPath}/api/chart/',
             dataType: "json",
             success: function (res) {
                 console.log(res.data);
@@ -47,7 +48,13 @@
         var pie = function(datas ,text) {
             // 基于准备好的dom，初始化echarts实例
             var myChart = echarts.init(document.getElementById('main'));
-
+            var series = []
+            datas.yobj.ylist.forEach(function(item,index) {
+                var obj = {};
+                obj.name = datas.xobj.xlist[index];
+                obj.value = item;
+                series.push(obj);
+            })
             // 指定图表的配置项和数据
             var option = {
                 title : {
@@ -64,8 +71,7 @@
                     right: 10,
                     top: 20,
                     bottom: 20,
-                    data:   datas.x,
-                    selected: data.selected
+                    data:   datas.xobj.xlist
                 },
                 series : [
                     {
@@ -73,7 +79,7 @@
                         type: 'pie',
                         radius : '55%',
                         center: ['40%', '50%'],
-                        data:   datas.y,
+                        data:  series ,
                         itemStyle: {
                             emphasis: {
                                 shadowBlur: 10,
