@@ -1,10 +1,12 @@
 package com.heiku.server.myserver.service;
 
+import com.heiku.server.myserver.constrants.ResultEnum;
 import com.heiku.server.myserver.dao.RoomOrderDao;
 import com.heiku.server.myserver.dao.UserDao;
-import com.heiku.server.myserver.entity.OrderClassRoom;
-import com.heiku.server.myserver.entity.RoomOrder;
-import com.heiku.server.myserver.entity.Student;
+import com.heiku.server.myserver.entity.*;
+import com.heiku.server.myserver.util.ResultVOUtil;
+import com.heiku.server.myserver.vo.OrderRoomVO;
+import com.heiku.server.myserver.vo.ResultVO;
 import com.sun.org.apache.regexp.internal.RE;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -112,5 +114,41 @@ public class OrderService {
             }
         }
         return returnList;
+    }
+
+
+
+
+
+
+    public ResultVO listOrder(int page, int limit, boolean all) {
+        List<RoomOrder> roomOrderList = roomOrderDao.listOrders();
+        List<OrderRoomVO> voList = new ArrayList<>();
+        if (!roomOrderList.isEmpty()){
+            for (RoomOrder order : roomOrderList) {
+                OrderRoomVO vo = transToOrderVO(order);
+                voList.add(vo);
+            }
+        }
+        return ResultVOUtil.ok(voList, ResultEnum.SUCCESS);
+    }
+
+    private OrderRoomVO transToOrderVO(RoomOrder order) {
+        OrderRoomVO vo = new OrderRoomVO();
+        BeanUtils.copyProperties(order, vo);
+
+        String studentId = order.getStudentId();
+        String teacherId = order.getTeacherId();
+        String adminId = order.getAdminId();
+
+        Student student = userDao.getStudentById(studentId);
+        Teacher teacher = userDao.getTeacherById(teacherId);
+        Admin admin = userDao.getAdminById(adminId);
+
+        vo.setStudent(student);
+        vo.setTeacher(teacher);
+        vo.setAdmin(admin);
+
+        return vo;
     }
 }

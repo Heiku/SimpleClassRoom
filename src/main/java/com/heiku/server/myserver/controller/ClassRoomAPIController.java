@@ -29,7 +29,7 @@ public class ClassRoomAPIController {
     public ResultVO pageRoom(@RequestParam(required = false, defaultValue = "1") int page,
                              @RequestParam(required = false, defaultValue = "10") int limit,
                              @RequestParam(required = false, defaultValue = "false") boolean all,
-                             int type) {
+                             @RequestParam(required = false, defaultValue = "-1")int type) {
         return roomService.listRoom(page, limit, all, type);
     }
 
