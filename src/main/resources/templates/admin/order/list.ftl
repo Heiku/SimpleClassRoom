@@ -25,12 +25,13 @@
             , cols: [[ //表头
                 , {field: 'roomName', title: '教室名', minWidth: 180}
                 , {field: 'useFor', title: '用途', minWidth: 100}
-                , {field: 'classTime', title: '课节', sort: true, minWidth: 180}
+                , {field: 'timeStr', title: '课节', sort: true, minWidth: 180}
                 , {field: 'type', title: '教室类型', sort: true, minWidth: 180,templet:'#Type'}
                 , {field: 'student', title: '申请人', sort: true, minWidth: 180,templet:'#Student'}
                 , {field: 'teacher', title: '辅导员', sort: true, minWidth: 180,templet:'#Teacher'}
                 , {field: 'admin', title: '教保', sort: true, minWidth: 180,templet:'#Admin'}
-
+                ,{field:'createTime', title: '创建时间',width:200, templet: "<div>{{layui.util.toDateString(d.createTime, 'yyyy-MM-dd HH:mm:ss')}}</div>"}
+                ,{field:'modifyTime', title: '修改时间',width:200, templet: "<div>{{layui.util.toDateString(d.modifyTime, 'yyyy-MM-dd HH:mm:ss')}}</div>"}
 //                 ,{fixed: 'right',title:'操作', align:'center', toolbar: '#toolbar',width:180}
             ]]
         });
