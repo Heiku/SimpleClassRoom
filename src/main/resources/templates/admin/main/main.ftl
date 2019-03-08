@@ -31,8 +31,6 @@
                     <dl class="layui-nav-child" class="site-auction-active">
                         <dd><a href="javascript:;" data-url="${request.contextPath}/admin/user/list" data-id="11"
                                class="site-auction-active" data-title="用户信息" data-type="tabAdd">用户信息</a></dd>
-                        <#--<dd><a href="javascript:;" data-url="${request.contextPath}/admin/address/list" data-id="12"-->
-                               <#--class="site-auction-active" data-title="用户地址" data-type="tabAdd">用户地址</a></dd>-->
                     </dl>
                 </li>
                 <li class="layui-nav-item">
@@ -48,10 +46,6 @@
 
                     </dl>
                 </li>
-                <li class="layui-nav-item"><a href="javascript:;" data-url="${request.contextPath}/admin/banner/list"
-                                              data-id="4" class="site-auction-active" data-title="首页轮播"
-                                              data-type="tabAdd">首页轮播</a></li>
-                <#--<li class="layui-nav-item"><a href="">发布商品</a></li>-->
             </ul>
         </div>
     </div>

@@ -22,27 +22,12 @@
 <div class="login">
     <div class="message">商品后台管理系统</div>
     <div id="darkbannerwrap"></div>
-    <form method="post" action="${request.contextPath}/auth/doLogin" class="layui-form">
+    <form method="post" action="${request.contextPath}/auth/homeDoLogin" class="layui-form">
         <input name="account" placeholder="用户名" autocomplete="off" type="text" lay-verify="account" class="layui-input" value="admin">
         <hr class="hr15">
         <input name="password" lay-verify="password" placeholder="密码" autocomplete="off" type="password"
                class="layui-input" value="111111">
         <hr class="hr15">
-        <div class="layui-inline">
-            <label class="layui-form-label" style="width:40px;padding: 9px 0px;">验证码&nbsp;</label>
-            <div class="layui-input-inline">
-                <input type="text" name="captcha" style="width:150px;height:35px;" autocomplete="off" lay-verify="code"
-                       class="layui-input">
-            </div>
-            <div class="layui-input-inline">
-                <img src="" id="code">
-            </div>
-
-        </div>
-        <#--<div>-->
-        <#--<label class="layui-form-label" style="width:40px;padding: 9px 0px;">记住我</label>  由于不好验证 目前去掉-->
-        <#--<input type="checkbox"   name="rememberMe" lay-skin="switch" lay-filter="switchTest" lay-text="ON|OFF">-->
-        <#--</div>-->
         <hr class="hr15">
         <input value="登录" lay-submit lay-filter="login" style="width:100%;" type="submit">
         <hr class="hr20">
@@ -65,10 +50,6 @@
                     if (v.trim() == '') {
                         return "密码不能为空";
                     }
-                }, code: function (v) {
-                    if (v.trim() == '') {
-                        return '验证码不能为空';
-                    }
                 }
             });
 
@@ -79,13 +60,6 @@
         if (msg.trim() != "") {
             layer.msg(msg, {icon: 5, anim: 6, offset: 't'});
         }
-        $("#code").click(function () {
-            var url = "${request.contextPath}/auth/images/captcha?" + new Date().getTime();
-            this.src = url;
-        }).click().show();
-        $('#code').on('mouseover', function () {
-            layer.tips('点击刷新验证码', this, {time: 1000});
-        });
     })
 
     if (window != top)
