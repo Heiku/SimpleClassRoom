@@ -23,7 +23,6 @@
             </div>
         <table class="layui-hide" id="data" lay-filter="table"></table>
     </div>
-</table>
 <script>
     layui.use(['table','form'], function () {
         var $ = layui.jquery;
