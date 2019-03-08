@@ -8,8 +8,23 @@
     <script type="text/javascript" src="${request.contextPath}/plugin/jquery/jquery-3.2.1.min.js"></script>
 </head>
 <body>
-<button class="layui-btn layui-btn-sm" id="add">添加</button>
-<table id="data" lay-filter="table">
+
+    <div class="layui-tab layui-tab-brief">
+        <div class="layui-tab-content">
+            <button class="layui-btn layui-btn-sm" id="add">添加</button>
+            <div class="layui-input-inline " style="margin-lfet: 50px">
+                <div class="layui-form">
+                    <select name="type"  lay-filter="type" id="type">
+                        <option value="0">机房</option>
+                        <option value="1">多媒体教室</option>
+                        <option value="2">礼堂</option>
+                        <option value="3">普通教室</option>
+                    </select>
+                </div>
+            </div>
+            <table id="data" lay-filter="table">
+        </div>
+    </div>
 </table>
 <script>
     layui.use('table', function () {
@@ -31,6 +46,14 @@
             ]]
         });
 
+        // 教室类型筛选
+        form.on('select(type)', function (data) {
+            table.reload('table', {
+                where: {
+                    type: data.value
+                }
+            });
+        });
         //监听行工具事件
         table.on('tool(table)', function (obj) { //注：tool 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"
             var data = obj.data //获得当前行数据
@@ -71,22 +94,22 @@
 <script type="text/html" id="Status">
     {{#  if(d.status == 0){ }}
     未使用
-    {{#  if(d.status == 1){ }}
+    {{#  else if(d.status == 1){ }}
     已被申请（未通过）
-    {{#  if(d.status == 2){ }}
+    {{#  else if(d.status == 2){ }}
     申请已通过
     {{#  } else { }}
     状态错误
     {{#  } }}
 </script>
 <script type="text/html" id="Number">
-    {{#  if(d.number == 0){ }}
+    {{#  if(d.type == 0){ }}
     机房
-    {{#  if(d.number == 1){ }}
+    {{#  else if(d.type == 1){ }}
     多媒体教室
-    {{#  if(d.number == 2){ }}
+    {{#  else if(d.type == 2){ }}
     礼堂
-    {{#  if(d.number == 3){ }}
+    {{#  else if(d.type == 3){ }}
     普通教室
     {{#  } else { }}
     状态错误
