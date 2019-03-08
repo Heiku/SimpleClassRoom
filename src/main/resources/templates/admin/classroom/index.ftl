@@ -8,10 +8,10 @@
     <script type="text/javascript" src="${request.contextPath}/plugin/jquery/jquery-3.2.1.min.js"></script>
 </head>
 <body>
-    <button class="layui-btn layui-btn-sm" id="add">添加</button>
-    <div class="layui-tab layui-tab-brief">
-        <div class="layui-tab-content">
-            <div class="layui-input-inline" style="margin-lfet: 50px">
+
+    <div class="layui-container">
+        <button class="layui-btn layui-btn-sm" id="add">添加</button>
+            <div class="layui-input-inline" style="margin-lfet: 100px">
                 <div class="layui-form">
                     <select name="type"  lay-filter="type" id="type">
                         <option value="0">机房</option>
@@ -21,8 +21,7 @@
                     </select>
                 </div>
             </div>
-            <table class="layui-hide" id="data" lay-filter="table"></table>
-        </div>
+        <table class="layui-hide" id="data" lay-filter="table"></table>
     </div>
 </table>
 <script>
