@@ -23,12 +23,12 @@
             , url: '${request.contextPath}/api/user/' //数据接口
             , page: true //开启分页
             , cols: [[ //表头
-                , {field: 'studentId', title: '学生号', minWidth: 120}
-                , {field: 'name', title: '姓名', minWidth: 100}
-                , {field: 'sex', title: '性别', minWidth: 80, sort: true,templet:"#Sex"}
-                , {field: 'faculty', title: '院系', minWidth: 80, sort: true}
-                , {field: 'subject', title: '专业方向', minWidth: 80}
-                , {field: 'teacher', title: '辅导员', minWidth: 80,templet:"#Teacher"}
+                , {field: 'studentId', title: '学生号', minWidth: 200}
+                , {field: 'name', title: '姓名', minWidth: 120}
+                , {field: 'sex', title: '性别', minWidth: 120, sort: true,templet:"#Sex"}
+                , {field: 'faculty', title: '院系', minWidth: 120, sort: true}
+                , {field: 'subject', title: '专业方向', minWidth: 200}
+                , {field: 'teacher', title: '辅导员', minWidth: 200,templet:"#Teacher"}
                 , {fixed: 'right', title: '操作', align: 'center', toolbar: '#toolbar'}
             ]]
         });
@@ -72,8 +72,10 @@
 <script type="text/html" id="Sex">
     {{#  if(d.sex == 0){ }}
     男
-    {{#  } else { }}
+    {{#  } else if(d.sex == 1) { }}
     女
+    {{#  } else { }}
+    中性
     {{#  } }}
 </script>
 <script type="text/html" id="Teacher">
