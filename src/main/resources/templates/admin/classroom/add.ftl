@@ -9,7 +9,7 @@
 </head>
 <body>
 <fieldset class="layui-elem-field site-demo-button" style="margin-top: 30px;padding-top: 30px;">
-    <legend>添加用户信息</legend>
+    <legend>添加教室</legend>
     <form class="layui-form" lay-filter="form">
         <div class="layui-form-item">
             <label class="layui-form-label">教室名</label>

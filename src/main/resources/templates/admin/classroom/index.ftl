@@ -27,9 +27,10 @@
     </div>
 </table>
 <script>
-    layui.use('table', function () {
+    layui.use(['table','form'], function () {
         var $ = layui.jquery;
-        var table = layui.table;
+        var table = layui.table
+                ,form = layui.form;
 
         //第一个实例
         table.render({
