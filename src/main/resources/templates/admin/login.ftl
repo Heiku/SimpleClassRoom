@@ -55,27 +55,31 @@
             });
 
             form.render();
-        });
 
-        form.on('submit(submit)', function (data) {
-            $.ajax({
-                url: '${request.contextPath}/auth/homeDoLogin',
-                type: 'post',
-                data: $('#forms').serialize(),
-                success: function (data) {
-                    if (data.success) {
-                        layer.msg('登陆成功', {
-                            time: 1500,
-                            icon: 1,
-                        }, function () {
-                            window.location.href = '${request.contextPath}/admin/index';
-                        });
+
+            form.on('submit(submit)', function (data) {
+                $.ajax({
+                    url: '${request.contextPath}/auth/homeDoLogin',
+                    type: 'post',
+                    data: $('#forms').serialize(),
+                    success: function (data) {
+                        if (data.success) {
+                            layer.msg('登陆成功', {
+                                time: 1500,
+                                icon: 1,
+                            }, function () {
+                                window.location.href = '${request.contextPath}/admin/index';
+                            });
+                        }
+
                     }
-
-                }
+                });
+                return false;
             });
-            return false;
+
         });
+
+
         <#--var msg = '${message}';-->
         <#--if (msg.trim() != "") {-->
             <#--layer.msg(msg, {icon: 5, anim: 6, offset: 't'});-->
