@@ -66,4 +66,6 @@ public class OrderRoomVO {
     private Teacher teacher;
 
     private Admin admin;
+
+    private String timeStr;
 }

@@ -35,4 +35,14 @@ public enum  ClassTime {
         return 0;
     }
 
+    public static String getTimeById(int id){
+        for (ClassTime classTime : ClassTime.values()){
+            if (classTime.id == id){
+                return classTime.time;
+            }
+        }
+
+        return "";
+    }
+
 }

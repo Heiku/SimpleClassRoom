@@ -5,6 +5,7 @@ import com.heiku.server.myserver.dao.RoomOrderDao;
 import com.heiku.server.myserver.dao.UserDao;
 import com.heiku.server.myserver.entity.*;
 import com.heiku.server.myserver.util.ResultVOUtil;
+import com.heiku.server.myserver.vo.ClassTime;
 import com.heiku.server.myserver.vo.OrderRoomVO;
 import com.heiku.server.myserver.vo.ResultVO;
 import com.sun.org.apache.regexp.internal.RE;
@@ -139,6 +140,8 @@ public class OrderService {
     private OrderRoomVO transToOrderVO(RoomOrder order) {
         OrderRoomVO vo = new OrderRoomVO();
         BeanUtils.copyProperties(order, vo);
+
+        vo.setTimeStr(ClassTime.getTimeById(order.getClassTime()));
 
         String studentId = order.getStudentId();
         String teacherId = order.getTeacherId();
