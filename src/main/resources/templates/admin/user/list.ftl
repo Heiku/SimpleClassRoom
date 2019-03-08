@@ -23,13 +23,12 @@
             , url: '${request.contextPath}/api/user/' //数据接口
             , page: true //开启分页
             , cols: [[ //表头
-                {field: 'id', title: 'ID', width: 60, sort: true, fixed: 'left'}
-                , {field: 'studentId', title: '学生号', width: 120}
-                , {field: 'name', title: '姓名', width: 100}
-                , {field: 'sex', title: '性别', width: 80, sort: true,templet:"#Sex"}
-                , {field: 'faculty', title: '院系', width: 80, sort: true}
-                , {field: 'subject', title: '专业方向', width: 80}
-                , {field: 'teacherId', title: '辅导员id', width: 80}
+                , {field: 'studentId', title: '学生号', minWidth: 120}
+                , {field: 'name', title: '姓名', minWidth: 100}
+                , {field: 'sex', title: '性别', minWidth: 80, sort: true,templet:"#Sex"}
+                , {field: 'faculty', title: '院系', minWidth: 80, sort: true}
+                , {field: 'subject', title: '专业方向', minWidth: 80}
+                , {field: 'teacher', title: '辅导员', minWidth: 80,templet:"#Teacher"}
                 , {fixed: 'right', title: '操作', align: 'center', toolbar: '#toolbar'}
             ]]
         });
@@ -77,6 +76,8 @@
     女
     {{#  } }}
 </script>
-
+<script type="text/html" id="Teacher">
+    {{ d.teacher.name}}
+</script>
 </body>
 </html>
