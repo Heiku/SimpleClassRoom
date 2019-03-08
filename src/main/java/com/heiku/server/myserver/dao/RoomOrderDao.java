@@ -45,4 +45,9 @@ public interface RoomOrderDao {
 
     @Update("update room_order set status = 3 where room_name = #{roomName} and class_time = #{classTime}")
     int checkRoomOrderFail(String userId, int role, String roomName, int classTime);
+
+
+
+    @Select("select * from room_order")
+    List<RoomOrder> listOrders();
 }
