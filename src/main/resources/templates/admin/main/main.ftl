@@ -36,6 +36,8 @@
                 <li class="layui-nav-item">
                     <a href="javascript:;">教室管理</a>
                     <dl class="layui-nav-child">
+                        <dd><a href="javascript:;" data-url="${request.contextPath}/admin/classroom/index" data-id="11"
+                               class="site-auction-active" data-title="用户信息" data-type="tabAdd">教室管理</a></dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item">
