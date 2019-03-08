@@ -45,7 +45,13 @@
                     <dl class="layui-nav-child">
                         <dd><a href="javascript:;" data-url="${request.contextPath}/admin/order/list" data-id="3"
                                class="site-auction-active" data-title="订单管理" data-type="tabAdd">订单管理</a></dd>
-
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">统计管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;" data-url="${request.contextPath}/admin/chart/classRoomStatistics" data-id="3"
+                               class="site-auction-active" data-title="教室统计" data-type="tabAdd">教室利用率统计</a></dd>
                     </dl>
                 </li>
             </ul>

@@ -43,11 +43,13 @@
 </script>
 <script type="text/html" id="Status">
     {{#  if(d.status == 0){ }}
-    未使用
+    未审批
     {{# } else if(d.status == 1){ }}
-    已被申请（未通过）
+    辅导员已审批
     {{# }  else if(d.status == 2){ }}
-    申请已通过
+    教保已审批
+    {{# }  else if(d.status == 3){ }}
+    审批失败
     {{#  } else { }}
     状态错误
     {{#  } }}
