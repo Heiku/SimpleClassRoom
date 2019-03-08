@@ -8,17 +8,18 @@
     <script type="text/javascript" src="${request.contextPath}/plugin/jquery/jquery-3.2.1.min.js"></script>
 </head>
 <body>
-
+    <button class="layui-btn layui-btn-sm" id="add">添加</button>
     <div class="layui-tab layui-tab-brief">
         <div class="layui-tab-content">
-            <button class="layui-btn layui-btn-sm" id="add">添加</button>
             <div class="layui-input-inline" style="margin-lfet: 50px">
-                <select name="type"  lay-filter="type" id="type">
-                    <option value="0">机房</option>
-                    <option value="1">多媒体教室</option>
-                    <option value="2">礼堂</option>
-                    <option value="3">普通教室</option>
-                </select>
+                <div class="layui-form">
+                    <select name="type"  lay-filter="type" id="type">
+                        <option value="0">机房</option>
+                        <option value="1">多媒体教室</option>
+                        <option value="2">礼堂</option>
+                        <option value="3">普通教室</option>
+                    </select>
+                </div>
             </div>
             <table id="data" lay-filter="table">
         </div>

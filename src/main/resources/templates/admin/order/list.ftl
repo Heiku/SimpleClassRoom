@@ -20,14 +20,13 @@
         table.render({
             elem: '#data'
             , height: 500
-            , url: '${request.contextPath}/order/list' //数据接口
+            , url: '${request.contextPath}/api/order/' //数据接口
             , page: true //开启分页
             , cols: [[ //表头
-                {field: 'sn', title: '订单号', width: 200}
-                , {field: 'customerAddress', title: '地址', width: 180, templet:"#addressId"}
-                , {field: 'status', title: '订单状态', width: 100, templet: '#orderStatus'}
-                , {field: 'paymentMoney', title: '实际支付金额', sort: true, width: 180}
-                , {field: 'payTime', title: '支付时间', sort: true, width: 180}
+                , {field: 'roomName', title: '教室名', width: 180, templet:"#addressId"}
+                , {field: 'useFor', title: '用途', width: 100, templet: '#orderStatus'}
+                , {field: 'classTime', title: '课节', sort: true, width: 180}
+                , {field: 'type', title: '教室类型', sort: true, width: 180}
                 , {field: 'deliveryTime', title: '配送时间', sort: true, width: 180}
                 , {field: 'remarks', title: '用户备注', sort: true, minWidth: 180}
                  ,{fixed: 'right',title:'操作', align:'center', toolbar: '#toolbar',width:180}
