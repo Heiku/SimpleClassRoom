@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 /**
  * @Author: Heiku
@@ -43,7 +44,14 @@ public class OrderService {
             return -1;
         }
         String teacherId = student.getTeacherId();
-        String adminId = "13001001";
+        //String adminId = "13001001";
+
+        List<Admin> adminList = userDao.quertAllAdmin();
+        Random random = new Random();
+        int n = random.nextInt(adminList.size());
+
+        String adminId = adminList.get(n).getAdminId();
+
         int status = 0;
         Date createTime = new Date();
         Date modifyTime = new Date();
@@ -90,8 +98,17 @@ public class OrderService {
         int i = 0;
         if (pass == 1){
             i = roomOrderDao.checkRoomOrder(userId, role, roomName, classTime);
+
+            // 教保审批成功
+            if (role == 2){
+                roomOrderDao.updateRoom(roomName, 2);
+            }
         }else {
             i = roomOrderDao.checkRoomOrderFail(userId, role, roomName, classTime);
+
+            if (role == 2){
+                roomOrderDao.updateRoom(roomName, 0);
+            }
         }
 
         if (i <= 0)

@@ -131,7 +131,7 @@ public class UserService {
             userDao.insertStudent(studentId, name, gender, faculty, subject, teacherId);
 
             // 为新增的学生添加默认的账号
-            userDao.insertUser(studentId, "sise", 1);
+            register(studentId, "sise", 1);
 
             return ResultVOUtil.ok(vo, ResultEnum.SUCCESS);
         }catch (Exception e){

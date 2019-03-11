@@ -60,12 +60,20 @@ public class UserServiceTest {
 
         userDao.insertUser(userId, checkPsd, type);*/
 
-        String userId = "13001001";
+        String userId = "13001002";
         String password = "sisea";
         int type = 2;
         String checkPsd = MD5Util.fromPassToDBPass(password, MD5Util.SALT);
 
         userDao.insertUser(userId, checkPsd, type);
+
+
+        /*String userId = "12001002";
+        String password = "siset";
+        int type = 2;
+        String checkPsd = MD5Util.fromPassToDBPass(password, MD5Util.SALT);
+
+        userDao.insertUser(userId, checkPsd, type);*/
     }
 
 
